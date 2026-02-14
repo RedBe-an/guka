@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+model User {
+  id         Int      @id @default(autoincrement())
+  username   String   @unique
+  email      String   @unique
+  password   String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+enum ExamType {
+  MOCK_6   // 6모 -> 06
+  MOCK_9   // 9모 -> 09
+  CSAT     // 수능 -> 11
+}
+
+enum Category {
+  THEORY   // 독서론 -> 1
+  SOCIETY  // 사회 -> 2
+  SCIENCE  // 과학 -> 3
+  HUMAN    // 인문 -> 4
+  TECH     // 기술 -> 5
+  ART      // 예술 -> 6
+  GRAMMAR  // 문법 -> 7
+}
+
+model Passages {
+  /// 6자리 규칙 코드 (예: 261111)
+  id        Int      @id
+
+  year      Int      // 2026
+  examType  ExamType
+  number    Int      // 지문 번호 (1~4)
+  category  Category
+  subject   String
+
+  @@unique([year, examType, number])
+  @@index([year, examType])
+}
+
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+        
