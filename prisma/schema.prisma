@@ -38,6 +38,7 @@ model Passages {
   number    Int      // 지문 번호 (1~4)
   category  Category
   subject   String
+  content   String?
 
   @@unique([year, examType, number])
   @@index([year, examType])
