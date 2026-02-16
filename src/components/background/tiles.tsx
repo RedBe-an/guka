@@ -1,9 +1,7 @@
-"use client"
+"use client";
 
-import { BGPattern } from "../bg-pattern"
+import { BGPattern } from "../bg-pattern";
 
 export function TilesDemo() {
-  return (
-	<BGPattern variant="grid" mask="fade-edges" />
-  )
+  return <BGPattern variant="grid" mask="fade-edges" />;
 }

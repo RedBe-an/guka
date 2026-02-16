@@ -36,11 +36,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
     <div className="min-h-screen">
       <Navbar />
       <main className="mx-auto max-w-4xl px-6 pt-24 pb-12">
-        <form
-          action="/search"
-          method="GET"
-          className="mb-8 flex gap-3"
-        >
+        <form action="/search" method="GET" className="mb-8 flex gap-3">
           <input
             name="q"
             type="text"

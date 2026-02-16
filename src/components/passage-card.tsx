@@ -44,7 +44,9 @@ type PassageCardProps = {
 };
 
 export function PassageCard({ passage }: PassageCardProps) {
-  const rawContent = passage.content ? decodeHtmlEntities(passage.content) : null;
+  const rawContent = passage.content
+    ? decodeHtmlEntities(passage.content)
+    : null;
   const preview = rawContent
     ? rawContent.length > 150
       ? `${rawContent.slice(0, 150)}...`
